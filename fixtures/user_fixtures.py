@@ -1,0 +1,6 @@
+import pytest
+from core.services.user_service import UserService
+
+@pytest.fixture
+def user_service(api_client):
+  return UserService(api_client)
