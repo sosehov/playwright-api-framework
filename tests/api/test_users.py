@@ -12,3 +12,11 @@ def test_get_user(user_service):
 def test_get_invalid_user(user_service):
     response = user_service.get_user(UserData.INVALID_USER_ID)
     ResponseValidator.assert_status_code(response, 404)
+    
+    body = response.json()
+    ResponseValidator.assert_response_is_empty(body)
+    
+def test_get_negative_user_id(user_service):
+    response = user_service.get_user(UserData.NEGATIVE_USER_ID)
+    ResponseValidator.assert_status_code(response, 404)
+  
