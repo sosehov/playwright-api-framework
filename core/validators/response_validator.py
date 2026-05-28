@@ -9,3 +9,9 @@ class ResponseValidator:
   @staticmethod
   def assert_key_in_response(response_json: dict, key: str):
     assert key in response_json, f"Missing key: {key}"
+    
+  @staticmethod
+  def assert_response_is_empty(response_json: dict):
+    assert response_json == {}, (
+      f"Expected empty response, got {response_json}"
+    )

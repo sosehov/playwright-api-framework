@@ -1,6 +1,7 @@
 class UserData:
   VALID_USER_ID = 1
   INVALID_USER_ID = 9999
+  NEGATIVE_USER_ID = -1
   
   CREATE_USER_PAYLOAD = {
     "name": "Test User",
