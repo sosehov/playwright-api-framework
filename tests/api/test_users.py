@@ -1,5 +1,5 @@
 from core.data.user_data import UserData
-from core.data.user_factory import UserFactory
+from core.factories.user_factory import UserFactory
 from core.validators.response_validator import ResponseValidator
 
 def test_get_user(user_service):
@@ -21,14 +21,12 @@ def test_get_negative_user_id(user_service):
     response = user_service.get_user(UserData.NEGATIVE_USER_ID)
     ResponseValidator.assert_status_code(response, 404)
     
-def test_create_user_dynamic(user_service):
-    payload = UserFactory.create_user()
-    
-    response = user_service.create_user(payload)
-    
-    ResponseValidator.assert_status_code(response, 201)
-    
-    body = response.json()
-    ResponseValidator.assert_key_in_response(body, "id")
-    
+def test_create_dynamic_user(user_service):
+  payload = UserFactory.valid_user()
   
+  response = user_service.create_user(payload)
+  
+  ResponseValidator.assert_status_code(response, 201)
+  
+  body = response.json()
+  ResponseValidator.assert_key_in_response(body, "id")

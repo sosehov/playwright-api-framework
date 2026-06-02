@@ -7,7 +7,7 @@ from core.config.config import BASE_URL_API, API_KEY
 def headers():
   return {
     "x-api-key": API_KEY,
-    "Content_Type": "application/json"
+    "Content-Type": "application/json"
   }
 
 @pytest.fixture
