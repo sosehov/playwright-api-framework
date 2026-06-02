@@ -23,10 +23,18 @@ def test_get_negative_user_id(user_service):
     
 def test_create_dynamic_user(user_service):
   payload = UserFactory.valid_user()
-  
   response = user_service.create_user(payload)
-  
   ResponseValidator.assert_status_code(response, 201)
-  
   body = response.json()
   ResponseValidator.assert_key_in_response(body, "id")
+  
+def test_update_user(user_service):
+  payload = UserFactory.updated_user()
+  response = user_service.update_user(UserData.VALID_USER_ID, payload)
+  ResponseValidator.assert_status_code(response, 200)
+  body = response.json()
+  ResponseValidator.assert_key_in_response(body, "name")
+  
+def test_delete_user(user_service):
+  response = user_service.delete_user(UserData.VALID_USER_ID)
+  ResponseValidator.assert_status_code(response, 204)

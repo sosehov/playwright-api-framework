@@ -8,3 +8,8 @@ class UserService:
   def create_user(self, payload: dict):
     return self.api_client.post("/users", json=payload)
   
+  def update_user(self, user_id: int, payload: dict):
+    return self.api_client.put(f"/users/{user_id}", json=payload)
+  
+  def delete_user(self, user_id: int):
+    return self.api_client.delete(f"/users/{user_id}")
