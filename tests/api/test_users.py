@@ -2,6 +2,11 @@ import pytest
 from core.data.user_data import UserData
 from core.factories.user_factory import UserFactory
 from core.validators.response_validator import ResponseValidator
+from core.models.user_models import (
+    GetUserResponse,
+    CreateUserResponse,
+    UpdateUserResponse,
+)
 
 
 @pytest.mark.api
@@ -12,6 +17,7 @@ def test_get_user(user_service):
 
     body = response.json()
     ResponseValidator.assert_key_in_response(body, "data")
+    ResponseValidator.assert_valid_schema(body, GetUserResponse)
 
 
 @pytest.mark.api
@@ -33,6 +39,7 @@ def test_create_dynamic_user(user_service):
     ResponseValidator.assert_status_code(response, 201)
     body = response.json()
     ResponseValidator.assert_key_in_response(body, "id")
+    ResponseValidator.assert_valid_schema(body, CreateUserResponse)
 
 
 @pytest.mark.api
@@ -42,6 +49,7 @@ def test_update_user(user_service):
     ResponseValidator.assert_status_code(response, 200)
     body = response.json()
     ResponseValidator.assert_key_in_response(body, "name")
+    ResponseValidator.assert_valid_schema(body, UpdateUserResponse)
 
 
 @pytest.mark.api
