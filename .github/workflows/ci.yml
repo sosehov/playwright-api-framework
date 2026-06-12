@@ -26,6 +26,7 @@ jobs:
           BASE_URL_API: ${{ secrets.BASE_URL_API }}
           BASE_URL_UI: ${{ secrets.BASE_URL_UI }}
           API_KEY: ${{ secrets.API_KEY }}
+          ENV: staging
         run: pytest -m api -v --alluredir=allure-results
 
       - name: Upload Allure results
