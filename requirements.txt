@@ -28,3 +28,4 @@ tzdata==2026.2
 urllib3==2.6.3
 allure-pytest==2.16.0
 pydantic==2.13.4
+pytest-rerunfailures==16.3
