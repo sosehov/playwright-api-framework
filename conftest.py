@@ -2,7 +2,6 @@ import logging
 
 import pytest
 from core.client.api_client import APIClient
-from fixtures.user_fixtures import user_service
 from core.config.config import BASE_URL_API, API_KEY
 
 logging.getLogger("faker").setLevel(logging.WARNING)
