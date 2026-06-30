@@ -1,5 +1,6 @@
 import pytest
 from core.services.user_service import UserService
+from pages.login_page import LoginPage
 
 # In a real project with persistent data, use yield + teardown here:
 # yield user_service
